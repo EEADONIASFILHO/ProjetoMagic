@@ -8,7 +8,12 @@ const urlapirandomica = "https://api.scryfall.com/cards/random";
 // let searchPokemon = 1;
 // let mtg=386616;
 function getcard(url,n) {
- const sorteio = fetch(`${url}`)
+ const sorteio = fetch(`${url}`,{
+        mode:"no-cors",
+        headers: {  
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+        },
+    }))
     .then(response => response.json())
     .then(data => {
       document.getElementById('o'+n).src=data.image_uris.png;
